@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="id">
+
+    </div>
+
+    <form action="post.jsp" name="frm">
+        <label for="emp">아이디</label>
+        <input type="text" name="emp" id="emp">
+        <label for="name">이름</label>
+        <input type="text" name="name" id="name">
+        <input type="submit" value="전송">
+    </form>
+
+    <!-- <table border="1">
+        <thead>
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>성별</th>
+                <th>연락처</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>hongee</td>
+                <td>홍길동</td>
+                <td>남자</td>
+                <td>010-1234-5678</td>
+            </tr>
+            <tr>
+                <td>minsunie</td>
+                <td>김민순</td>
+                <td>여자</td>
+                <td>010-3333-5543</td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <script>
+        let person = [{
+            name: '홍길동',
+            id: 'hongee',
+            gender: 'male',
+            number: '010-1234-5789'
+
+        }, {
+            name: '김민순',
+            id: 'minsunie',
+            gender: 'female',
+            number: '010-3333-5543'
+        }]
+
+        let title=['아이디','이름','성별','전화번호'];
+        let th,tr,thead,table,div,text;
+        thead=document.createElement('thead');
+        table=document.createElement('table');
+
+            for (let field in title)
+            {
+                text=document.createTextNode(title[field]);
+                console.log(text);
+                th=document.createElement('th');
+                th.appendChild(text);
+                thead.appendChild(th);
+            }
+            table.appendChild(thead);
+            div=document.getElementById('id');
+            div.appendChild(table);
+
+
+
+
+
+        // let divTag, tableTag, tbodyTag, trTag, tdTag;
+
+        // divTag = document.getElementById('id');
+        // tableTag = document.createElement('table');
+        // tableTag.setAttribute('border', '1');
+        // tbodyTag = document.createElement('tbody');
+        // for (let sibal in person) {
+        //     trTag = document.createElement('tr')
+
+        // }
+        // tdTag = document.createElement('td')
+        // tdTag.innerHTML = 'SS';
+        // trTag.appendChild(tdTag);
+        // tbodyTag.appendChild(trTag);
+        // tableTag.appendChild(tbodyTag);
+        // divTag.appendChild(tableTag);
+    </script>
+</body>
+
+</html>

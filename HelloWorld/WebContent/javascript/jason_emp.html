@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 700px; 
+        
+        }
+        td {
+            text-align: left;
+            height: 30px;
+        }
+
+        th {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <div class="container">
+        <h3>사원리스트</h3>
+        <div class="row">
+            <div class="id"></div>
+            <div class="first_name"></div>
+            <div class="last_name"></div>
+            <div class="email"></div>
+            <div class="gender"></div>
+            <div class="ip_address"></div>
+
+        </div>
+
+    </div> -->
+    <script>
+        let rawData =
+            `[{"id":1,"first_name":"Cristina","last_name":"Timeby","email":"ctimeby0@cnbc.com","gender":"Genderfluid","ip_address":"25.255.142.130"},
+                        {"id":2,"first_name":"Nancey","last_name":"Roughsedge","email":"nroughsedge1@slashdot.org","gender":"Bigender","ip_address":"92.43.242.9"},
+                        {"id":3,"first_name":"Sanderson","last_name":"Peppard","email":"speppard2@nyu.edu","gender":"Agender","ip_address":"54.158.128.187"},
+                        {"id":4,"first_name":"Jermaine","last_name":"Harber","email":"jharber3@google.nl","gender":"Non-binary","ip_address":"98.237.167.214"},
+                        {"id":5,"first_name":"Carlye","last_name":"Sywell","email":"csywell4@delicious.com","gender":"Genderfluid","ip_address":"117.192.120.254"},
+                        {"id":6,"first_name":"Carlos","last_name":"Crippes","email":"ccrippes5@jiathis.com","gender":"Bigender","ip_address":"1.218.43.31"},
+                        {"id":7,"first_name":"Hamish","last_name":"Bazley","email":"hbazley6@alibaba.com","gender":"Genderfluid","ip_address":"155.81.18.146"},
+                        {"id":8,"first_name":"Ora","last_name":"Champain","email":"ochampain7@howstuffworks.com","gender":"Genderqueer","ip_address":"169.164.162.64"},
+                        {"id":9,"first_name":"Trisha","last_name":"Le Jean","email":"tlejean8@odnoklassniki.ru","gender":"Bigender","ip_address":"84.171.66.67"},
+                        {"id":10,"first_name":"Vinnie","last_name":"Skip","email":"vskip9@phpbb.com","gender":"Polygender","ip_address":"107.85.184.29"},
+                        {"id":11,"first_name":"Antoinette","last_name":"Kerbey","email":"akerbeya@linkedin.com","gender":"Female","ip_address":"134.96.222.216"},
+                        {"id":12,"first_name":"Godard","last_name":"Goulstone","email":"ggoulstoneb@last.fm","gender":"Agender","ip_address":"165.44.154.69"},
+                        {"id":13,"first_name":"Gilberta","last_name":"Klimpke","email":"gklimpkec@earthlink.net","gender":"Genderqueer","ip_address":"132.20.239.154"},
+                        {"id":14,"first_name":"Vince","last_name":"Durno","email":"vdurnod@360.cn","gender":"Male","ip_address":"44.205.235.147"},
+                        {"id":15,"first_name":"Krystyna","last_name":"Mitten","email":"kmittene@plala.or.jp","gender":"Polygender","ip_address":"138.181.55.122"}]`;
+        // rawData => object
+        let data = JSON.parse(rawData);
+        console.log(data);
+        document.write("<table border='1'>")
+        document.write("<tr><th>" + 'first_name' + "</th><th>" + 'last_name' + "</th><th>" + 'email' + "</th><th>" +
+            'gender' + "</th><th>" + 'ip_address' + "</th><th>" + 'delete' + "</th></tr>");
+        data.forEach(function (obj) {
+            document.write('<tr onmouseout="mOut(event)" onmouseover="mOver(event)"><td>' + obj.first_name + "</td><td>" + obj.last_name + "</td><td>" + obj.email +
+                "</td><td>" + obj.gender + "</td><td>" + obj.ip_address +
+                "</td><td><button onclick='clickFnc(event)'>click</button></td></tr>");
+
+        });
+        document.write("</table>")
+        function mOver(e){
+            e.target.parentNode.style.backgroundColor = 'skyblue';
+        }
+        function mOut(e){
+            e.target.parentNode.style.backgroundColor = '';
+        }
+
+        function clickFnc(e) {
+            let btn = e.target;
+            console.log(btn.parentNode.parentNode.remove());
+        }
+        //object=>json
+        //let json =JSON.stringify(data);
+
+        // document.querySelectorAll('.row>div.firstName')   div.firtName 의값을 읽어옴
+        // document.getElementsByClassName('firstName')
+    </script>
+
+
+</body>
+
+</html>

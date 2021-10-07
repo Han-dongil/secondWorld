@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Ajax 처리</h2>
+    <div id='show'></div>
+    <script>
+        //서버로 get.json
+        let xhtp = new XMLHttpRequest();
+        xhtp.onreadystatechange = function () {
+            if (xhtp.readyState == 4 && xhtp.status == 200) {
+                // console.log(xhtp.responseText);
+                let data = JSON.parse(xhtp.responseText);
+                // console.log(data);
+                creatPage(data);
+            }
+        }
+        xhtp.open('get', 'get.json');
+        xhtp.send();
+
+        function creatPage(ary) {
+            //title 생성
+            let table, tr, td, txt ,th;
+            table = document.createElement('table');
+            table.border = '1';
+            tr = document.createElement('tr');
+            table.appendChild(tr);
+            for (let title in ary[0]) {
+                txt = document.createTextNode(title.toUpperCase().replace('_', ' '));
+                th = document.createElement('th');
+                th.appendChild(txt);
+                tr.appendChild(th);
+                
+            }
+            //데이터 생성
+            for (let obj of ary) {
+                tr = document.createElement('tr');
+                table.appendChild(tr);
+                for (let title in obj) {
+                    td = document.createElement('td');
+                    txt = document.createTextNode(obj[title]);
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+                    
+                }
+                
+            }
+            
+            
+            let div = document.getElementById('show');
+            div.appendChild(table);
+
+
+
+            // console.log(table);
+        }
+    </script>
+</body>
+
+</html>

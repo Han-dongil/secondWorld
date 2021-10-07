@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const members = [{
+            name: '최선영',
+            score: 80
+        }, {
+            name: '윤희성',
+            score: 85
+        }, {
+            name: '김지인',
+            score: 89
+        }, {
+            name: '홍길동',
+            score: 50
+        }];
+        //filter , foreach , map
+        //pass 여부
+        //pass <= filter
+        //각각의 이름,스코어,패스여부 document 출력
+        document.write('<table border="1">')
+            members.forEach((x,u,a)=>console.log(x,u,a))
+            
+        const passMembers = members.map(function (obj) {
+            
+            const pass = '';
+            passMember = {
+                name: obj.name,
+                score: obj.score,
+                pass: pass
+            }
+            return passMember;
+        }).filter(function (obj) {
+            if(obj.score>60)
+            {
+                obj.pass='pass';
+            }
+            return obj.score > 60;
+        }).forEach(function (obj) {
+            document.write('<tr><td>'+obj.name+'</td><td>'+obj.score+'</td><td>'+obj.pass+'</td></tr>');
+        });
+        document.write('</table>')
+        // console.log(passMembers);
+
+        // const passMembers60 = passMembers.filter(function (obj) {
+        //     return obj.score > 60;
+        // });
+        
+        // passMembers60.forEach(function (obj) {
+        //     return obj.pass = 'pass';
+        // });
+        
+        // console.log(passMembers60);
+        
+        // document.write('<li>'+passMembers60.name+','+passMembers60.score+','+passMembers60.pass+'</li>');
+
+    </script>
+
+</body>
+
+</html>

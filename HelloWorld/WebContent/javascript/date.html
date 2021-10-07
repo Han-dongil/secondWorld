@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td.saturday {
+            background-color: skyblue;
+        }
+
+        td.sunday {
+            background-color: tomato;
+        }
+
+        thead {
+            width: 500px;
+            height: 50px;
+            text-align: center;
+            background-color: gray;
+            font-size: x-large;
+        }
+
+        tbody {
+            font-size: x-large;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+
+
+<body>
+    <script>
+        let today = new Date();
+        let lastDate = new Date(2020, 10, 0);
+        today.setFullYear(2020, 9, 1);
+
+        document.write('월달력' + '<table border="1" width="500px" height="400px" ><tr>');
+        document.write(
+            '<thead><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></thead><tr><tbody>');
+        if (today.getDay() != 0) {
+            for (let k = 0; k < today.getDay(); k++) {
+                document.write('<td></td>');
+            }
+        }
+        for (let i = 1; i <= lastDate.getDate(); i++) {
+            if ((today.getDay() + i) % 7 == 1) {
+                document.write('<td class="sunday" >' + i + '</td>');
+            } else if ((today.getDay() + i) % 7 != 0) {
+                document.write('<td>' + i + '</td>');
+            } else if ((today.getDay() + i) % 7 == 0) {
+                document.write('<td class="saturday" >' + i + '</td>');
+                document.write('</tr><tr>');
+            }
+
+
+        }
+        document.write('</tbody></table>')
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td.sunday {
+            background-color: yellow;
+        }
+
+        td.saturday {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='test1'></div>
+    <div id='test'></div>
+    <script>
+        let table = document.createElement('table');
+        table.setAttribute('border', '1');
+
+        let trTag = document.createElement('tr');
+        table.appendChild(trTag);
+
+        for (let i = 0; i < 10; i++) {
+            if (i % 2 == 0) {
+                let tdTag = document.createElement("td");
+                tdTag.className = 'sunday';
+                tdTag.innerHTML = i;
+                trTag.appendChild(tdTag);
+                let test = document.getElementById('test');
+                test.appendChild(table);
+            }
+            if (i % 2 != 1) {
+                let tdTag = document.createElement("td");
+                tdTag.className = 'saturday';
+                tdTag.innerHTML = i;
+                trTag.appendChild(tdTag);
+                let test = document.getElementById('test');
+                test.appendChild(table);
+            }
+        }
+        // if(k==0)
+        // {
+        //     console.log(k);
+        //     let test=document.getElementById('test');
+        //     test.appendChild(table);
+        // }
+        // else{
+        //     console.log(k);
+        //     let test1=document.getElementById('test1');
+        //     test1.appendChild(table);
+        // }
+        
+    
+    </script>
+
+</body>
+
+</html>

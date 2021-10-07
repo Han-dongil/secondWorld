@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td.saturday {
+            background-color: skyblue;
+        }
+
+        td.sunday {
+            background-color: tomato;
+        }
+
+        thead {
+            width: 400px;
+            height: 50px;
+            text-align: center;
+            background-color: gray;
+            font-size: x-large;
+        }
+        #month{
+            color: black;
+            background-color: greenyellow;
+            width: 400px;
+            height: 50px;
+            font-size: xx-large;
+        }
+
+        tbody {
+            font-size: x-large;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+
+
+<body>
+    <input id="yymm" type="text">
+    <button onclick="clickFunc()">입력</button>
+    <div id='test'>
+        <td class='sunday'></td>
+    </div>
+    <script>
+        function clickFunc() {
+            let input = document.getElementById('yymm');
+            let yemo = input.value;
+            year = yemo.slice(0, 4);
+            month = yemo.slice(4, 6);
+            showCalendar(year, month);
+        }
+
+        function showCalendar(year, month) {
+
+
+            let today = new Date();
+            let lastDate = new Date(year, month, 0);
+            today.setFullYear(year, month - 1, 1);
+
+
+            // let week = ['일', '월', '화', '수', '목', '금', '토'];
+            let thTag = document.createElement('th');
+
+            let table = document.createElement('table');
+            table.setAttribute('border', '1');
+            table.setAttribute('width', '500px');
+            table.setAttribute('height', '400px');
+            let tdTag = document.createElement('td');
+            let trTag = document.createElement('tr');
+            let thead = document.createElement('thead');
+            let tbody = document.createElement('tbody');
+
+            thead.innerHTML = '<tr><td id="month"  colspan="7">'+month + '월'+'</td></tr>' + '<th>' + '일' + '</th><th>' + '월' + '</th><th>' + '화' + '</th><th>' + '수' +
+                '</th><th>' + '목' + '</th><th>' + '금' + '</th><th>' + '토' + '</th>';
+            // console.log(thTag);
+
+            // thead.appendChild(thTag);
+            table.appendChild(thead);
+            for (let i = (1 - today.getDay()); i <= lastDate.getDate(); i++) {
+                if (today.getDay() != 0 && i <= 0) {
+                    for (let k = 0; k < today.getDay(); k++) {
+                        tdTag = document.createElement('td');
+                        tdTag.innerHTML = " ";
+                    }
+                } else if (i > 0) {
+
+                    if ((today.getDay() + i) % 7 == 1) {
+                        tdTag = document.createElement('td');
+                        tdTag.className = 'sunday';
+                        tdTag.innerHTML = i;
+                        trTag = document.createElement('tr');
+                    } else if ((today.getDay() + i) % 7 != 0) {
+                        tdTag = document.createElement('td');
+                        tdTag.innerHTML = i;
+                    } else if ((today.getDay() + i) % 7 == 0) {
+                        tdTag = document.createElement('td');
+                        tdTag.className = "saturday";
+                        tdTag.innerHTML = i;
+
+                    }
+
+                }
+                trTag.appendChild(tdTag);
+                tbody.appendChild(trTag);
+            }
+            table.appendChild(tbody);
+            let test = document.getElementById('test');
+            test.appendChild(table);
+        }
+    </script>
+
+</body>
+
+</html>

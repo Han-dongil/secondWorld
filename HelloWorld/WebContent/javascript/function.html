@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id='btn'>click</button>
+    <script>
+        function hello() {
+
+            return 'hello world';
+        }
+        console.log(hello());
+        //arrow function 
+        let nice = (name)=>{
+            return 'nice'+name;
+        }
+        console.log(nice('홍길동'));
+
+        //this : function, arrow func.
+        let btn = document.getElementById('btn');
+        btn.onclick=()=>{
+            console.log(event.target.style.backgroundColor='yellow');
+        }
+        btn.addEventListener('mouseover',function(){
+            this.style.backgroundColor='red';
+        });
+        btn.addEventListener('mouseout',(event)=>{
+            event.target.style.backgroundColor='';
+        });
+    </script>
+
+</body>
+
+</html>

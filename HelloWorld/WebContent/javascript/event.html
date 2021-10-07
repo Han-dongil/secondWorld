@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <button onmouseover="clickFunc()">click</button> -->
+    <input type="text" id="result">
+    <p></p>
+    <button onclick="clickFunc1()">1</button>
+    <button onclick="clickFunc2()">2</button>
+    <button onclick="clickFunc3()">3</button>
+    <p></p>
+    <button onclick="clickFunc4()">4</button>
+    <button onclick="clickFunc5()">5</button>
+    <button onclick="clickFunc6()">6</button>
+    <p></p>
+    <button onclick="clickFunc7()">7</button>
+    <button onclick="clickFunc8()">8</button>
+    <button onclick="clickFunc9()">9</button>
+    <p></p>
+    <button onclick="clickFunc0()">0</button>
+    <button onclick="clickFunc10()">+</button>
+    <button onclick="clickFunc11()">=</button>
+    <p id='ing'></p>
+    <!-- <h1>안녕하세요.</h1> -->
+    <script>
+        //태그 ->elment
+        a = [];
+        let b;
+
+        // clickFunc();
+        function clickFunc1() {
+            // window.alert('클릭 되었습니다.')
+            a.push('1');
+            result();
+        }
+        function clickFunc2() {
+            a.push('2');
+            result();
+        }
+
+        function clickFunc3() {
+            a.push('3');
+            result();
+        }
+
+        function clickFunc4() {
+            a.push('4');
+            result();
+        }
+
+        function clickFunc5() {
+            a.push('5');
+            result();
+        }
+
+        function clickFunc6() {
+            a.push('6');
+            result();
+        }
+
+        function clickFunc7() {
+            a.push('7');
+            result();
+        }
+
+        function clickFunc8() {
+            a.push('8');
+            result();
+        }
+
+        function clickFunc9() {
+            a.push('9');
+            result();
+        }
+
+        function clickFunc10() {
+            a.push('+');
+            result();
+        }
+
+        function clickFunc11() {
+            a.push('=');
+            result();
+            // num1 = parseInt(b.split('+')[0]);
+            // num2 = parseInt(b.split('+')[1]);
+            console.log(num1 + num2);
+            input.value=(num1+num2);
+            let liTag=document.createElement('li');
+            let ing=document.getElementById('ing');
+            liTag.innerHTML=b+input.value;
+            ing.appendChild(liTag);    
+
+        }
+        
+        function result() {
+            
+            b ='';
+            for (let i = 0; i < a.length; i++) {
+                b += a[i];
+            }
+            
+            input = document.getElementById('result');
+            console.log(b);
+            input.value = b;
+            num1=parseInt(b.split('+')[0]);
+            num2=parseInt(b.split('+')[1]);
+      
+        }
+
+    </script>
+</body>
+
+</html>

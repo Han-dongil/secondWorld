@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html/table.html</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr style="background-color: gray;">
+                <th>이름</th>
+                <th>점수</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>김범수</td>
+                <td>90</td>
+            </tr>
+            <tr>
+                <td>김밤수</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>김붐수</td>
+                <td>70</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- colspan(td 합치기), rowspan(tr 합치기) 연습 -->
+    <table border="1">
+        <thead>
+            <tr>
+                <td rowspan="2">이름</td>
+                <td>국어</td>
+            </tr>
+            <tr>
+                <td>영어</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">홍길동</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td rowspan="2">동길홍</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>80</td>
+            </tr>
+        </tbody>
+    </table>
+    <table border="1">
+        <thead>
+            <tr>
+                <td colspan="3" style="text-align: center;">이름</td>
+            </tr>
+            <tr>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="3" style="text-align: center;">홍길동</td>
+            </tr>
+            <tr style="text-align: right;">
+                <td>88</td>
+                <td><img width="40px" src="../img/son.png" alt="소농민" </td> <td><a href="#">89</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

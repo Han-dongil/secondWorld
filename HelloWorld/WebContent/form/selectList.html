@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form/selectList.html</title>
+</head>
+
+<body>
+    <h3>그룹별</h3>
+    <form>
+        <label>
+            <select name="major">
+                <optgroup label="Computer">
+                    <option>Software</option>
+                    <option>Robot</option>
+                    <option>System</option>
+                <optgroup label="Language">
+                    <option>English</option>
+                    <option>China</option>
+                    <option>Germany</option>
+                <optgroup label="business">
+                    <option>Service</option>
+                    <option>Education</option>
+                    <option>Communication</option>
+                    <option>Marketing</option>
+                </optgroup>
+            </select>
+            <br><br><br>
+            <label>전공 분야를 입력하세요.
+                <input type="text" list="majorlist" name="major" id="">
+                <datalist id="majorlist">
+                    <option value="Software"></option>
+                    <option value="Robot"></option>
+                    <option value="System"></option>
+                    <option value="Service"></option>
+                    <option value="Education"></option>
+            </label>
+            <p></p>
+            <input type="submit" name="" id="">
+            <input type="reset">
+        </label>
+    </form>
+</body>
+
+</html>

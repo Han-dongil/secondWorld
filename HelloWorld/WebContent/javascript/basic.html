@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script>
+        var v1 = "hello, worl d";
+        v1 = 10;
+        v1 = true;
+        console.log(typeof v1);
+
+        v2 =30;
+        console.log(v2);
+        // v3=20;
+        function f1()
+        {
+           v3 = 40;
+           console.log("in"+v3);
+           v3=50;
+        }
+        f1();
+        console.log("out"+v3);
+
+        let num1 = 10; // 다시 선언불가능
+        let num2 = 20;
+        num2 = "hello"
+        console.log(num1);
+        console.log(num2);
+
+        const num3 =40; // const 값을 고정시킴 , 상수
+        console.log(num3);
+        // num3 ="hello";
+
+        const obj1 = {
+            name : "hong",age : 20
+        }
+        obj1.name="whang"; // obj1 자체를 새로 정의할순없지만 필드값은 변경가능함.
+        console.log(typeof obj1);
+        console.log(obj1.age);
+
+        let num4 = null;
+        console.log(num4);
+
+        let num5 = [];
+        console.log(typeof num5);
+        num5[0] = 10;
+        num5[1] = 'hello';
+        num5[2] = true; // 다른타입을 한배열에 담을수잇음
+
+        for(let i=0 ; i<num5.length;i++)
+        {
+            console.log(num5[i]);
+        }
+        document.write("hello World");
+        const hong ={
+            firstName : "kildong",
+            lastName : "Hong",
+            age : 20,
+            hobby : "독서"
+        }
+        document.write("<p>이름 : "+hong.firstName+hong.lastName+"</p>");
+        document.write("<p>나이 : "+hong.age+"<p>");
+        document.write("<p>취미 : "+hong.hobby+"<p>");
+        document.write("<ul>");
+        document.write("<li>"+hong.firstName+hong.lastName+"</li>");    
+        document.write("<li>"+hong.age+"</li>");    
+        document.write("<li>"+hong.hobby+"</li>");    
+        document.write("</ul>");
+            
+            </script>
+
+
+</body>
+</html>

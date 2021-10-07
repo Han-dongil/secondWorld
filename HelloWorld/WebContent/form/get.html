@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>form/get.html</title>
+</head>
+<body>
+	<!-- userId, userPw -> get.jsp -->
+	<form action="get.jsp" method="get">
+		아이디:<input type="number" name="employeeId"><br>
+		연랓거:<input type="number" name="phone"><br>
+		급여:<input type="number" name="salary"><br>
+		<!-- <input type="password" name="userPw"><br> -->
+		<input type="submit" value="전송"><br>
+		<input type="reset" value="초기화"><br>
+	</form>
+	
+	<h3>링크 -> 입력처리</h3>
+	<a href="get.jsp?employeeId=1004&phone=3333-4444&salary=25000">입력처리</a>
+</body>
+</html>

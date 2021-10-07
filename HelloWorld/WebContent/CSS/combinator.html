@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.parent div{
+            background-color: yellow;
+        }
+        div.child~p {
+            color: red;
+        }
+        div.child+p{
+            font-size: x-large;
+        }
+        div.parent >p:first-child{
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- div.parent>div ( child)--> 
+<!-- div.child >div (grandchildren)-->
+<!-- div.parent div (child+grandchildren)-->
+<!-- div.parent p(parent 의 자손중에 p태그) -->
+<!-- div.child ~ P (형제태그) -->
+<div class="parent">
+    <p>brother</p>
+    <div class="child">
+        <div class="grandChildren">
+            <p class="grand">test</p>
+        </div>
+    </div>
+    <p>child</p>
+</div>
+</body>
+</html>

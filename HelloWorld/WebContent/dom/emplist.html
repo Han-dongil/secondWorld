@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+
+</head>
+<body>
+	<h3>사원등록</h3>
+	<div id="aaa">
+		<div class="field">
+			사원번호 : <input type="text" id="empId">
+		</div>
+		<div class="field">
+			이름 : <input type="text" id="name">
+		</div>
+		<div class="field">
+			이메일 : <input type="text" id="email">
+		</div>
+		<div class="field">
+			입사일자 : <input type="date" id="hire">
+		</div>
+		<div class="field">
+			직무 : <input type="text" id="job" value="IT_PROG">
+		</div>
+		<button id="addBtn">등록</button>
+		
+
+
+	</div>
+	<div id="show"></div>
+	<script src="emp.js"></script>
+	<script>
+		function btnClick(e){
+			let btn = e.target;
+			btn.parentNode.parentNode.remove();
+		}
+		
+		document.getElementById('addBtn').onclick = function() {
+			//사용자 입력값 가져와서 ajax(): 서버로 데이터 전송.  응답결과 : 화면에 정보추가.
+			let id = document.getElementById('empId').value;
+			let name = document.getElementById('name').value;
+			let email = document.getElementById('email').value;
+			let hire = document.getElementById('hire').value;
+			let job = document.getElementById('job').value;
+			
+			if(eId==""||name==""||email==""||hire==""||job=="")
+			{
+				window.alert("필수입력항목 확인!");
+			}
+	
+			let param = 'id=' + id + '&name=' + name + '&email=' + email
+					+ '&hire=' + hire + '&job=' + job;
+			
+			let xhtp = new XMLHttpRequest();
+			xhtp.onload = function() 
+			{
+				let data = JSON.parse(xhtp.responseText)
+				//{object}
+				let tr = document.createElement('tr');
+				for ( let field in data) 
+				{
+					let td = document.createElement('td');
+					td.appendChild(document.createTextNode(data[field]));
+					tr.appendChild(td);
+					document.querySelector("#show>table").appendChild(tr);
+				}
+			}
+			xhtp.open('post', '../AddEmpServlet');
+			xhtp.setRequestHeader("Content-type",
+					"application/x-www-form-urlencoded");
+			xhtp.send(param);
+		}
+		
+	</script>
+
+	
+</body>
+</html>

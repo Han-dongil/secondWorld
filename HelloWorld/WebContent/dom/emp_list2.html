@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        div#show {
+            width: 60%;
+            float: left;
+            
+        }
+
+        div#aside {
+            width: 28%;
+            float: left;
+            border: 2px dotted firebrick;
+            padding: 5px;
+        }
+
+        #aside label {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='show'>
+
+    </div>
+    <div id="aside">
+        <div class="id"><label for="empId">ID</label><input type="text" id="empId"></div>
+        <div class="fname"><label for="empId">FName</label><input type="text" id="firstName"></div>
+        <div class="lname"><label for="empId">LName</label><input type="text" id="lastName"></div>
+        <div class="email"><label for="empId">Email</label><input type="text" id="email"></div>
+        <div class="gender"><label for="empId">Gender</label><input type="text" id="gender"></div>
+        <div class="address"><label for="empId">IP</label><input type="text" id="address"></div>
+        <div class="btn"> <button id="btn">변경</button></div>
+    </div>
+
+
+    <script>
+        document.getElementById('btn').onclick = function () {
+            let empId = document.getElementById('empId').value;
+            let refirst = document.getElementById('firstName').value;
+            // console.log(empId);
+            let find=document.getElementById(empId);
+            console.log(find.childNodes[1].nodeValue);
+        }
+        let rawData =
+            `[{"id":1,"first_name":"Cristina","last_name":"Timeby","email":"ctimeby0@cnbc.com","gender":"Genderfluid","ip_address":"25.255.142.130"},
+                        {"id":2,"first_name":"Nancey","last_name":"Roughsedge","email":"nroughsedge1@slashdot.org","gender":"Bigender","ip_address":"92.43.242.9"},
+                        {"id":3,"first_name":"Sanderson","last_name":"Peppard","email":"speppard2@nyu.edu","gender":"Agender","ip_address":"54.158.128.187"},
+                        {"id":4,"first_name":"Jermaine","last_name":"Harber","email":"jharber3@google.nl","gender":"Non-binary","ip_address":"98.237.167.214"},
+                        {"id":5,"first_name":"Carlye","last_name":"Sywell","email":"csywell4@delicious.com","gender":"Genderfluid","ip_address":"117.192.120.254"},
+                        {"id":15,"first_name":"Krystyna","last_name":"Mitten","email":"kmittene@plala.or.jp","gender":"Polygender","ip_address":"138.181.55.122"}]`;
+
+        let data = JSON.parse(rawData);
+        let trTag, tdTag, text, text1, tbody, thTag, thead;
+        let table = document.createElement('table');
+        table.border = '1';
+        // table.setAttribute('border', '1');
+        tbody = document.createElement('tbody');
+        thead = document.createElement('thead');
+        for (let field in data[0]) {
+            text1 = document.createTextNode(field);
+            console.log(text1);
+            thTag = document.createElement('th');
+            thTag.appendChild(text1);
+            thead.appendChild(thTag);
+        }
+        table.appendChild(thead);
+        for (let row of data) {
+            trTag = document.createElement('tr');
+            trTag.id=row.id;
+            trTag.onmouseover=function(){
+                this.style.backgroundColor='red';
+                let empid=this.childNodes[0].firstChild.nodeValue;
+                let first=this.childNodes[1].firstChild.nodeValue;
+                let last=this.childNodes[2].firstChild.nodeValue;
+                let email=this.childNodes[3].firstChild.nodeValue;
+                let gender=this.childNodes[4].firstChild.nodeValue;
+                let ip=this.childNodes[5].firstChild.nodeValue;
+                document.getElementById('empId').value=empid;
+                document.getElementById('firstName').value=first;
+                document.getElementById('lastName').value=last;
+                document.getElementById('email').value=email;
+                document.getElementById('gender').value=gender;
+                document.getElementById('address').value=ip;
+
+            }
+            
+            trTag.onmouseout=function(){
+                this.style.backgroundColor='';
+            }
+            for (let field in row) {
+                tdTag = document.createElement('td');
+                text = document.createTextNode(row[field]);
+                tdTag.appendChild(text);
+                // console.log(row[field][0]);
+                trTag.appendChild(tdTag);
+                
+            }
+            tbody.appendChild(trTag);
+            // trTag.id=trTag.childNodes[0].nodeValue;
+            
+        }
+        table.appendChild(tbody);
+        let div = document.getElementById('show');
+        div.appendChild(table);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>ajax xml 파일실습</h1>
+    <div id='show'></div>
+
+    <script>
+        let xhtp = new XMLHttpRequest();
+        xhtp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let doc = this.responseXML;
+                let data = doc.getElementsByTagName('record');
+                // console.log(data[0].childNodes[0].childNodes[0].nodeValue);
+                createPage(data);
+                // console.log(data);
+            }
+
+        }
+
+        xhtp.open('get', 'dataset.xml');
+        xhtp.send();
+
+        function createPage(data) {
+            // let id= data[i].childNodes[1].childNodes[0].nodeValue;
+            // let fn= data[i].childNodes[0].childNodes[0].nodeValue;
+            // let ln= data[i].childNodes[2].childNodes[0].nodeValue;
+            // let em= data[i].childNodes[3].childNodes[0].nodeValue;
+            // let gen= data[i].childNodes[4].childNodes[0].nodeValue;
+            // let ip= data[i].childNodes[5].childNodes[0].nodeValue;
+            //
+            let table , tr , td ,th ,text;
+            table = document.createElement('table');
+            table.border='1';
+            //타이틀 헤더
+            tr=document.createElement('tr');
+            let titles=['아이디','성','이름','이메일','성별','ip주소'];
+            for(let title of titles){
+                td=document.createElement('th');
+                txt=document.createTextNode(title);
+                td.appendChild(txt);
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+            for(let j=0 ; j<data.length;j++){
+                tr=document.createElement('tr');
+                for(let i=0 ; i<6;i++)
+                {
+                    td=document.createElement('td');
+                    let id=data[j].childNodes[i].firstChild.nodeValue;
+                    txt=document.createTextNode(id)
+                    td.appendChild(txt);
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+            document.getElementById('show').appendChild(table);
+        }
+        </script>
+
+</body>
+
+</html>

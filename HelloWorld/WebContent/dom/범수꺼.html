@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom/emp_list.html</title>
+</head>
+
+<body>
+    <div id="show"></div>
+    <div id="dtDiv">
+        <h1 id="dtH1"></h1>
+    </div>
+    <script>
+        let rawData =
+            `{"employees": [{"id":1,"first_name":"Shirleen","last_name":"Novik","email":"snovik0@theguardian.com","gender":"Male","ip_address":"195.72.15.222"},
+{"id":2,"first_name":"Anastassia","last_name":"Heap","email":"aheap1@reddit.com","gender":"Female","ip_address":"249.5.56.110"},
+{"id":3,"first_name":"Standford","last_name":"Luckcuck","email":"sluckcuck2@slate.com","gender":"Female","ip_address":"119.116.101.203"},
+{"id":4,"first_name":"Padgett","last_name":"Douse","email":"pdouse3@abc.net.au","gender":"Female","ip_address":"244.172.199.147"},
+{"id":5,"first_name":"Dulce","last_name":"Cranham","email":"dcranham4@360.cn","gender":"Agender","ip_address":"155.43.212.37"},
+{"id":6,"first_name":"Charmion","last_name":"Gresham","email":"cgresham5@deviantart.com","gender":"Bigender","ip_address":"9.244.68.30"},
+{"id":7,"first_name":"Robbert","last_name":"Paroni","email":"rparoni6@dropbox.com","gender":"Female","ip_address":"203.241.155.141"},
+{"id":8,"first_name":"Katy","last_name":"Reubbens","email":"kreubbens7@1688.com","gender":"Agender","ip_address":"23.199.152.58"},
+{"id":9,"first_name":"Gradey","last_name":"Larcher","email":"glarcher8@youtu.be","gender":"Bigender","ip_address":"97.29.249.9"},
+{"id":10,"first_name":"Marv","last_name":"Ireland","email":"mireland9@gmpg.org","gender":"Polygender","ip_address":"247.115.159.42"},
+{"id":11,"first_name":"Wallis","last_name":"Thurston","email":"wthurstona@simplemachines.org","gender":"Polygender","ip_address":"155.135.106.240"},
+{"id":12,"first_name":"Alexandrina","last_name":"Piaggia","email":"apiaggiab@google.fr","gender":"Polygender","ip_address":"141.60.16.215"},
+{"id":13,"first_name":"Michaella","last_name":"Aupol","email":"maupolc@home.pl","gender":"Non-binary","ip_address":"84.203.107.107"},
+{"id":14,"first_name":"Sutton","last_name":"Keddie","email":"skeddied@theguardian.com","gender":"Male","ip_address":"235.173.158.217"},
+{"id":15,"first_name":"Marcel","last_name":"Glas","email":"mglase@cyberchimps.com","gender":"Agender","ip_address":"186.42.87.156"}]}`;
+
+        let obj = JSON.parse(rawData);
+
+        let divTag, tableTag, tHeadTag, tBodyTag, trTag, tdTag, text;
+        divTag = document.getElementById('show');
+
+        tableTag = document.createElement('table');
+        tableTag.setAttribute('border', '1');
+        divTag.appendChild(tableTag);
+
+        tHeadTag = document.createElement('thead');
+        tableTag.appendChild(tHeadTag);
+
+        tBodyTag = document.createElement('tbody');
+        tableTag.appendChild(tBodyTag);
+
+        employees = obj.employees;
+
+        function table() {
+            for (let i = 0; i < employees.length; i++) {
+                trTag = document.createElement('tr');
+                trTag.setAttribute('id',employees[i].id);
+                tBodyTag.appendChild(trTag);
+                trTag.onclick = function () {
+                    detail(i);
+                }
+                // trTag.onmouseover = function () {
+                //     mOver(i);
+                // }
+                // trTag.onmouseout = function () {
+                //     mOut(i);
+                // }
+
+                tdTag1 = document.createElement('td');
+                trTag.appendChild(tdTag1);
+                tdTag1.innerHTML = employees[i].id;
+
+                tdTag2 = document.createElement('td');
+                trTag.appendChild(tdTag2);
+                tdTag2.innerHTML = employees[i].first_name;
+
+                tdTag3 = document.createElement('td');
+                trTag.appendChild(tdTag3);
+                tdTag3.innerHTML = employees[i].last_name;
+
+                tdTag4 = document.createElement('td');
+                trTag.appendChild(tdTag4);
+                tdTag4.innerHTML = employees[i].email;
+
+                tdTag5 = document.createElement('td');
+                trTag.appendChild(tdTag5);
+                tdTag5.innerHTML = employees[i].gender;
+
+                tdTag6 = document.createElement('td');
+                trTag.appendChild(tdTag6);
+                tdTag6.innerHTML = employees[i].ip_address;
+
+                
+            }
+        }
+        table();
+        detail(0);
+        tableBtn = document.createElement('button');
+        divTag.appendChild(tableBtn);
+        tableBtn.innerHTML = '새로고침';
+        tableBtn.onclick = function () {
+            table();
+        }
+
+
+        function detail(i) {
+            let detailDiv = document.getElementById('dtDiv');
+            detailDiv.innerHTML = '<br>id: <input type="text" id="inputId" value="' + employees[i].id +
+                '"><br>first_name: <input type="text" id="inputFN" value="' + employees[i].first_name +
+                '"><br>last_name: <input type="text" id="inputLN" value="' + employees[i].last_name +
+                '"><br>email: <input type="text" id="inputEmail" value="' + employees[i].email +
+                '"><br>gender: <input type="text" id="inputGender" value="' + employees[i].gender +
+                '"><br>ip_address: <input type="text" id="inputIP" value="' + employees[i].ip_address + '">';
+                
+            inputBtn = document.createElement('button');
+            detailDiv.appendChild(inputBtn);
+            inputBtn.innerHTML = '변경';
+            inputBtn.onclick = function () {
+                update(i);
+            }
+
+        }
+
+        function update(i) {
+            employees[i].id = document.getElementById('inputId').value;
+
+        }
+        function mOver(i) {
+            mOverTr = document.getElementById(employees[i])
+            mOverTr.style.backGroundColor='red';
+            console.log(mOverTr);
+
+        }
+        function mOut(i) {
+            trTag.style.backGroundColor='red';
+        }
+    </script>
+</body>
+
+</html>
